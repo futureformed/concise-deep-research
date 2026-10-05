@@ -93,16 +93,22 @@ Setup: `TYPESAFE_API_KEY` in the environment, key from the TypeSafe console at h
 
 Known weak points to design around: first-option bias in Choice (put the most common option last, or run twice with reversed order on a sample), long state with unrelated content, double negatives, adversarial text in state. Send public research text only; do not send confidential client material to any external classifier without checking the privacy rules in the skill.
 
-## Add a TypeSafe key
+## Add a classifier key
 
-Ask before you fall back. A missing key is a setup gap the user can close in two minutes, not a reason to run the sort on a language model. The request should say where the key comes from and exactly where to put it for the host in use. Never ask the user to paste the key into the chat.
+Ask before you fall back. A missing key is a setup gap the user can close in two minutes, not a reason to run the sort on a language model. The request should name the options, say where a key comes from, and say exactly where to put it for the host in use. Never ask the user to paste a key into the chat.
 
-1. Create a key at https://console.typesafe.ai/keys.
-2. Put it where the host's shell will see it:
+Any System One classifier from the options table above will do. The bundled script targets TypeSafe Jev; another classifier needs a small call of its own with the same questions and thresholds.
+
+1. Create a key with the vendor:
+   - TypeSafe Jev: https://console.typesafe.ai/keys, variable `TYPESAFE_API_KEY`.
+   - Cloudflare Clef: a Workers AI API token and account ID from the Cloudflare dashboard, variables `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`; endpoint `https://api.cloudflare.com/client/v4/accounts/<account>/ai/run/@cf/cloudflare/clef-flash`.
+   - A rerank or classify endpoint (Voyage, Cohere, Jina): that vendor's console and its documented variable name.
+   - A local model: no key; note the model name in the cost log.
+2. Put the variable where the host's shell will see it:
    - **Claude Code or Codex CLI on macOS or Linux:** add `export TYPESAFE_API_KEY="..."` to `~/.zshenv` (zsh) or `~/.bashrc` (bash). Claude Code also accepts an `env` block in `~/.claude/settings.json`: `{"env": {"TYPESAFE_API_KEY": "..."}}`. Codex accepts the same through its shell environment policy in `~/.codex/config.toml`.
    - **Windows:** set it as a user environment variable, then open a new terminal.
    - **Claude Cowork, claude.ai, ChatGPT:** these hosts cannot run the script, so the small-tier fallback applies; say so in the cost log.
-3. Start a new session, or run `test -n "$TYPESAFE_API_KEY" && echo set` to confirm. Never print the value.
+3. Start a new session, or run `test -n "$TYPESAFE_API_KEY" && echo set` (or the variable for your classifier) to confirm. Never print the value.
 
 Fallback only when the user declines, says to continue, or the host cannot run a script: run the same questions on the small tier with a fixed JSON schema and the same thresholds, and record "classifier: small tier" in the cost log. The step is the same; only the price changes.
 

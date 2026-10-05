@@ -2,7 +2,7 @@
 
 ## 1.1.1 (2026-10-05)
 
-- A missing `TYPESAFE_API_KEY` now triggers one clear request with setup instructions (new "Add a TypeSafe key" section in `model-routing.md`) instead of a silent fallback to a language model. The scope stage reports missing host controls with their one-line fix before the run spends anything.
+- A missing classifier key now triggers one clear request that names the System One options (TypeSafe Jev, Cloudflare Clef, rerank or classify endpoints, local models) with setup instructions (new "Add a classifier key" section in `model-routing.md`) instead of a silent fallback to a language model. The scope stage reports missing host controls with their one-line fix before the run spends anything.
 
 ## 1.1.0 (2026-10-05)
 
