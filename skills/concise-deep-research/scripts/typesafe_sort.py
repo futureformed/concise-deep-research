@@ -16,10 +16,10 @@ Usage:
 Row fields by task:
   rerank:    id, title, url, snippet
   type:      id, url, publisher, title, excerpt
-  citation:  id, claim, passage
+  citation:  id, claim, passage    (passage = the reader's verbatim excerpt, not a paraphrase)
   paywall:   id, text
   injection: id, text
-  triage:    id, claim, passages
+  triage:    id, claim, passages   (passages = verbatim excerpts only; do not include reader caveats)
 
 Needs TYPESAFE_API_KEY. --dry-run prints the first request body and exits.
 Keep the question wording in one place; edit QUESTIONS, not the call sites.

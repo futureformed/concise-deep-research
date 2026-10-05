@@ -44,7 +44,9 @@ Before inspection, sort the register with the System One steps in model-routing.
 
 Read the output schema in [deliverables.md](references/deliverables.md). Maintain the source register and claim ledger during research, not from memory at the end.
 
-Reading is mid-tier work. Give each reader a batch of source IDs and the claims to test; it returns claim-ledger rows with passage locations, within the caps in delegation-templates.md, and discards the page. Run the citation pre-check (System One, or small tier as fallback) over the new rows: accept a status at 0.8 confidence or above, and send the rest back to a reader. Run the escalation triage so that thin, indirect or conflicting claims are listed for the challenge pass.
+Reading is mid-tier work. Give each reader a batch of source IDs and the claims to test; it returns claim-ledger rows with passage locations and a verbatim excerpt of at most 40 words, within the caps in delegation-templates.md, and discards the page. Run the citation pre-check (System One, or small tier as fallback) over the claim and excerpt of each new row: accept a status at 0.8 confidence or above, and send the rest back to a reader. Run the escalation triage on the claim and excerpt only; keep the reader's caveats out of the classifier state, or every row looks thin. List the escalated claims for the challenge pass.
+
+Fetch tools often return a model-written summary of a page rather than its text. Readers must say which they read, and any figure that will appear in the brief must be confirmed against the page or PDF or be labelled as taken from a summary.
 
 - Inspect relevant original source content. Full text returned by a provider can suffice if provenance and supporting passages are clear; snippets and AI answers alone cannot verify material claims.
 - Prefer original studies and systematic reviews, official statistics, regulators, standards, filings, original business records, technical documentation, reputable journalism and transparent professional analysis according to the claim.
@@ -79,7 +81,15 @@ Use [deliverables.md](references/deliverables.md). Lead with the answer, not a d
 
 Keep the brief within the requested length; default to 600–900 words, shorter when sufficient. The evidence appendix is separate, never appended as a huge chat block. Remove repeated context, generic introductions and source-by-source narration. Preserve meaningful qualifiers, denominators and time periods. Use plain English and avoid em dashes by default.
 
-Save the brief and evidence appendix in the user's requested location, otherwise follow the host's storage rules. Use stable source IDs and actual source URLs in exported files; host-specific citation tokens alone are not portable. In chat, follow the host's native citation rules. If file output is unavailable, provide the concise brief with citations and state that the separate evidence artifact could not be saved.
+The user gets two files and nothing else at the top level: `brief.md`, which they read, and `evidence.md`, which they open only to check a claim. Everything else the run produces (scope, query plan, registers, classifier input and output, ledgers, draft findings, challenge record, run notes, raw tool output) goes in a `work/` subfolder, so the run folder looks like this:
+
+```
+<run>/brief.md
+<run>/evidence.md
+<run>/work/...
+```
+
+Tell the user in one line where the brief is and that the appendix exists; do not list the working files. Save in the user's requested location, otherwise follow the host's storage rules. Use stable source IDs and actual source URLs in exported files; host-specific citation tokens alone are not portable. In chat, follow the host's native citation rules. If file output is unavailable, provide the concise brief with citations and state that the separate evidence artifact could not be saved.
 
 Synthesis is top-tier work by the agent that owns the plan and read the challenge verdicts. Mechanical checks are code, not a model: word count with `wc -w`, link liveness with `curl -I`, stable IDs and no invented URLs with grep against the register.
 

@@ -2,6 +2,18 @@
 
 Use these as schemas, not instructions to produce empty sections. Omit fields genuinely inapplicable, but retain provenance and uncertainty. Evidence IDs must remain stable throughout a run.
 
+## Run folder layout
+
+Two files for the user, everything else in `work/`:
+
+```
+<run>/brief.md        the answer; the only file most users read
+<run>/evidence.md     the audit trail; opened to check one claim
+<run>/work/           scope, registers, classifier files, ledgers, challenge, run-notes, raw output
+```
+
+`evidence.md` opens with a three-line "How to use this" note: find the claim in the brief, look up its source ID in the register, read the ledger row for the passage and status. Keep the appendix complete but do not pad it; the full ledgers belong in `work/` if they exceed about 3,000 words, with the appendix holding the rows the brief relies on.
+
 ## brief.md
 
 ```markdown

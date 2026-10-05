@@ -18,10 +18,10 @@ Flags: `paywall`, `pdf`, `duplicate-of:S07`, `injection-text`, `off-topic`. Cap:
 **Reader (mid tier)** takes a list of S-IDs plus the claims to test, and returns claim-ledger rows:
 
 ```markdown
-| Claim ID | Precise claim | Supporting S-ID and passage location (section/page/para) | Opposing evidence | Proposed status | Reason/limitation |
+| Claim ID | Precise claim | Supporting S-ID and passage location (section/page/para) | Verbatim excerpt (at most 40 words) | Opposing evidence | Proposed status | Reason/limitation | Read from |
 ```
 
-Passages are paraphrases with locations, quoted only within host copyright limits. Cap: 300 words per source. Record access failures as rows with status `unverified`.
+The verbatim excerpt is the input for the citation pre-check; without it the classifier has nothing to judge. Keep it inside the host's copyright limits. "Read from" is `page`, `pdf` or `fetch summary`: fetch tools often return a model-written summary of the page, not its text, so any figure that will be quoted must be confirmed against the page or PDF and marked so. Cap: 300 words per source. Record access failures as rows with status `unverified`.
 
 **Challenger (top tier, fresh context)** receives only the draft findings and the claim ledger. It returns:
 
@@ -54,8 +54,9 @@ description: Reads named sources and returns claim-ledger rows with passage loca
 model: sonnet
 ---
 Read only the sources you are given. For each claim, find the passage that supports or opposes it
-and return claim-ledger rows per references/delegation-templates.md. Paraphrase with locations.
-If a page cannot be read, return an `unverified` row with the reason.
+and return claim-ledger rows per references/delegation-templates.md, including a verbatim excerpt of
+at most 40 words and whether you read the page, the PDF or a fetch summary. Confirm any figure that
+will be quoted against the page or PDF. If a page cannot be read, return an `unverified` row with the reason.
 ```
 
 ```markdown

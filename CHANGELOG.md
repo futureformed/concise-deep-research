@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-10-05)
+
+Changes from the first live run (three providers, TypeSafe Jev sort and triage, Sonnet readers, Opus challenge).
+
+- Output layout: the user gets `brief.md` and `evidence.md` at the top of the run folder; every working file goes in `work/`. The appendix opens with a three-line "How to use this" note.
+- Reader contract now returns a verbatim excerpt (at most 40 words) per claim row and says whether the page, the PDF or a fetch summary was read. The citation pre-check needs the excerpt; it cannot run on a paraphrase.
+- Triage and citation pre-check take the claim and excerpt only. Reader caveats in the classifier state pushed 57 of 75 rows over the threshold in the live run.
+- Figures from fetch summaries must be confirmed against the page or PDF before they appear in the brief, or be labelled.
+- Parallel keyless MCP over HTTP: use a curl user agent and space calls; noted in `search-providers.md`.
+
 ## 1.1.1 (2026-10-05)
 
 - A missing classifier key now triggers one clear request that names the System One options (TypeSafe Jev, Cloudflare Clef, rerank or classify endpoints, local models) with setup instructions (new "Add a classifier key" section in `model-routing.md`) instead of a silent fallback to a language model. The scope stage reports missing host controls with their one-line fix before the run spends anything.
