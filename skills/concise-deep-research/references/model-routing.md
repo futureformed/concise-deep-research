@@ -93,7 +93,18 @@ Setup: `TYPESAFE_API_KEY` in the environment, key from the TypeSafe console at h
 
 Known weak points to design around: first-option bias in Choice (put the most common option last, or run twice with reversed order on a sample), long state with unrelated content, double negatives, adversarial text in state. Send public research text only; do not send confidential client material to any external classifier without checking the privacy rules in the skill.
 
-Fallback when TypeSafe is not configured: run the same questions on the small tier with a fixed JSON schema and the same thresholds, and record "classifier: small tier" in the cost log. The step is the same; only the price changes.
+## Add a TypeSafe key
+
+Ask before you fall back. A missing key is a setup gap the user can close in two minutes, not a reason to run the sort on a language model. The request should say where the key comes from and exactly where to put it for the host in use. Never ask the user to paste the key into the chat.
+
+1. Create a key at https://console.typesafe.ai/keys.
+2. Put it where the host's shell will see it:
+   - **Claude Code or Codex CLI on macOS or Linux:** add `export TYPESAFE_API_KEY="..."` to `~/.zshenv` (zsh) or `~/.bashrc` (bash). Claude Code also accepts an `env` block in `~/.claude/settings.json`: `{"env": {"TYPESAFE_API_KEY": "..."}}`. Codex accepts the same through its shell environment policy in `~/.codex/config.toml`.
+   - **Windows:** set it as a user environment variable, then open a new terminal.
+   - **Claude Cowork, claude.ai, ChatGPT:** these hosts cannot run the script, so the small-tier fallback applies; say so in the cost log.
+3. Start a new session, or run `test -n "$TYPESAFE_API_KEY" && echo set` to confirm. Never print the value.
+
+Fallback only when the user declines, says to continue, or the host cannot run a script: run the same questions on the small tier with a fixed JSON schema and the same thresholds, and record "classifier: small tier" in the cost log. The step is the same; only the price changes.
 
 ## Cost log
 
