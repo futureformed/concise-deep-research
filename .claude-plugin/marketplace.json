@@ -1,0 +1,17 @@
+{
+  "name": "concise-deep-research",
+  "owner": {
+    "name": "Liam Dystant",
+    "url": "https://github.com/futureformed/concise-deep-research"
+  },
+  "metadata": {
+    "description": "Concise, evidence-led deep research for coding agents."
+  },
+  "plugins": [
+    {
+      "name": "concise-deep-research",
+      "source": "./",
+      "description": "Evidence-led research briefs through at least three search providers, with a claim ledger, model routing by stage and System One classifier steps."
+    }
+  ]
+}

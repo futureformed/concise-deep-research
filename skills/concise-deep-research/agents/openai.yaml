@@ -1,0 +1,6 @@
+interface:
+  display_name: "Concise Deep Research"
+  short_description: "Three-provider research with concise, sourced briefs"
+  default_prompt: "Use $concise-deep-research to investigate my question through at least three search providers and deliver a concise brief with a separate evidence appendix."
+policy:
+  allow_implicit_invocation: true
