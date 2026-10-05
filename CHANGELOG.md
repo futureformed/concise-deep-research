@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 (2026-10-05)
+
+- README: pipeline diagram, a plain explanation of System One models, and a table of eight search providers with sign-up links.
+- New `references/search-providers.md`: keys, free allowances, prices, page-text support, distinct-provider notes, and connect commands for Claude Code and Codex.
+- `references/model-routing.md`: what a System One model is and the current options (TypeSafe Jev, Cloudflare Clef, rerank and classify endpoints, local zero-shot classifiers, small language models as fallback).
+- `assets/`: the pipeline diagram and a square version for social posts, as SVG and PNG.
+
 ## 1.0.0 (2026-10-05)
 
 First public release.

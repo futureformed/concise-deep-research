@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-labelledby="t d">
+  <title id="t">How concise deep research works</title>
+  <desc id="d">Five steps: a question goes to three search providers, a System One classifier sorts the results, readers build a claim ledger, a challenger attacks the findings, and a short brief is delivered with a separate evidence appendix.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #e2e8f0; }
+      .title { font-size: 54px; font-weight: 800; letter-spacing: -.01em; }
+      .sub { font-size: 26px; fill: #94a3b8; }
+      .h { font-size: 30px; font-weight: 700; }
+      .s { font-size: 22px; fill: #cbd5e1; }
+      .tier { font-size: 18px; font-weight: 700; letter-spacing: .06em; fill: #ffffff; }
+      .card { fill: #1e293b; stroke: #334155; stroke-width: 2; }
+      .line { stroke: #94a3b8; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .num { font-size: 26px; font-weight: 800; fill: #0f172a; }
+      .foot { font-size: 22px; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+
+  <text x="70" y="110" class="title">Concise deep research</text>
+  <text x="70" y="156" class="sub">Three search providers in. One short, sourced brief out.</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(70,220)">
+    <circle cx="26" cy="26" r="26" fill="#e2e8f0"/><text x="26" y="35" text-anchor="middle" class="num">1</text>
+    <rect x="70" y="0" width="1060" height="110" rx="18" class="card"/>
+    <text x="100" y="46" class="h">Scope the question</text>
+    <text x="100" y="84" class="s">Decision, audience, scope, budget. The strongest model writes the plan once.</text>
+    <rect x="990" y="22" width="110" height="32" rx="16" fill="#7c3aed"/><text x="1045" y="45" text-anchor="middle" class="tier">TOP</text>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(70,360)">
+    <circle cx="26" cy="26" r="26" fill="#e2e8f0"/><text x="26" y="35" text-anchor="middle" class="num">2</text>
+    <rect x="70" y="0" width="1060" height="110" rx="18" class="card"/>
+    <text x="100" y="46" class="h">Search three providers</text>
+    <text x="100" y="84" class="s">Cheap workers run the queries and return rows, never whole pages.</text>
+    <rect x="970" y="22" width="130" height="32" rx="16" fill="#0d9488"/><text x="1035" y="45" text-anchor="middle" class="tier">SMALL</text>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(70,500)">
+    <circle cx="26" cy="26" r="26" fill="#e2e8f0"/><text x="26" y="35" text-anchor="middle" class="num">3</text>
+    <rect x="70" y="0" width="1060" height="110" rx="18" class="card"/>
+    <text x="100" y="46" class="h">Sort with a System One classifier</text>
+    <text x="100" y="84" class="s">Rank, label, dedupe, flag paywalls and injected text. About 4 cents per million tokens.</text>
+    <rect x="900" y="22" width="200" height="32" rx="16" fill="#d97706"/><text x="1000" y="45" text-anchor="middle" class="tier">SYSTEM ONE</text>
+  </g>
+
+  <!-- Step 4 -->
+  <g transform="translate(70,640)">
+    <circle cx="26" cy="26" r="26" fill="#e2e8f0"/><text x="26" y="35" text-anchor="middle" class="num">4</text>
+    <rect x="70" y="0" width="1060" height="110" rx="18" class="card"/>
+    <text x="100" y="46" class="h">Read and ledger every claim</text>
+    <text x="100" y="84" class="s">Supported · partly supported · disputed · unverified. Each with a passage someone read.</text>
+    <rect x="990" y="22" width="110" height="32" rx="16" fill="#2563eb"/><text x="1045" y="45" text-anchor="middle" class="tier">MID</text>
+  </g>
+
+  <!-- Step 5 -->
+  <g transform="translate(70,780)">
+    <circle cx="26" cy="26" r="26" fill="#e2e8f0"/><text x="26" y="35" text-anchor="middle" class="num">5</text>
+    <rect x="70" y="0" width="1060" height="110" rx="18" class="card"/>
+    <text x="100" y="46" class="h">Challenge, then write</text>
+    <text x="100" y="84" class="s">A fresh reviewer tries to overturn the findings. Then a 600–900 word brief plus an evidence file.</text>
+    <rect x="990" y="22" width="110" height="32" rx="16" fill="#7c3aed"/><text x="1045" y="45" text-anchor="middle" class="tier">TOP</text>
+  </g>
+
+  <!-- connectors -->
+  <path d="M96,302 L96,350" class="line"/>
+  <path d="M96,442 L96,490" class="line"/>
+  <path d="M96,582 L96,630" class="line"/>
+  <path d="M96,722 L96,770" class="line"/>
+
+  <!-- footer -->
+  <rect x="70" y="950" width="1060" height="2" fill="#334155"/>
+  <text x="70" y="1010" class="h">Pay for judgement once.</text>
+  <text x="70" y="1050" class="foot">The top model plans, challenges and writes. Everything else runs cheap or free.</text>
+  <text x="70" y="1120" class="foot">Open source, MIT · github.com/futureformed/concise-deep-research</text>
+</svg>

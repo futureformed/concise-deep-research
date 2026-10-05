@@ -67,7 +67,7 @@ Research cost is driven by three things: raw pages re-sent on every turn, the wh
 
 - Workers return tables, never page text. The planning agent reads rows and decides what to inspect.
 - Searching runs on the smallest tier. Reading runs on a mid tier. Scoping, challenge and synthesis run on the top tier in the same agent, so the judgement that shapes the plan also reads the challenge verdicts.
-- Sorting and first-pass checks run on a System One classifier (TypeSafe Jev): a model that returns a typed answer and a probability, at roughly a thousandth of the price of a language model. Where it is not configured, the smallest language model runs the same questions with a fixed schema. The step is the same; only the price changes.
+- Sorting and first-pass checks run on a System One classifier such as TypeSafe Jev or Cloudflare Clef: a model that returns a typed answer and a probability, at roughly a thousandth of the price of a language model. Where it is not configured, the smallest language model runs the same questions with a fixed schema. The step is the same; only the price changes.
 - Mechanical checks are code.
 
 Cost rules never relax the evidence rules. If a cheap step fails twice it escalates one tier and the escalation is logged. Every run records a model and cost log in the appendix. The measure is cost per accepted brief, not cost per call.

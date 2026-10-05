@@ -22,7 +22,7 @@ Modes:
 
 ## 2. Provider preflight
 
-Read [provider-readiness.md](references/provider-readiness.md). Discover tools before asking the user to enable anything. Use existing connected services and live tool schemas; never invent tool names, endpoints, credentials or UI controls.
+Read [provider-readiness.md](references/provider-readiness.md). Discover tools before asking the user to enable anything. If the user needs to connect a service, point them to [search-providers.md](references/search-providers.md) for sign-up pages and connect commands. Use existing connected services and live tool schemas; never invent tool names, endpoints, credentials or UI controls.
 
 For standard research or merge-and-verify, require successful, relevant search results from **at least three distinct provider services**. Examples: Exa, Tavily, Firecrawl, Parallel and identified native search. Count services, not tool calls, models, assistants or report files. A fetch-only tool does not count as a search provider. One provider through two interfaces counts once. Record any known shared underlying infrastructure; an unidentified native backend is supplementary, not a third qualifying provider.
 

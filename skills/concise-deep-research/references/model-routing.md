@@ -54,11 +54,32 @@ Other figures that change a routing decision:
 - **Claude Cowork, claude.ai, ChatGPT.** Sub-agents are automatic or absent, with no per-worker model choice. Lower effort for discovery turns and raise it for challenge and synthesis. Keep pages out of the chat. Run the System One steps through a script where the host allows code. Note "single model throughout" in the appendix.
 - **Managed or API runs.** Use the vendor's multi-agent or batch features with a small-tier worker model and a top-tier planner.
 
+## What a System One model is
+
+A language model writes text. A System One model decides. You give it some text (the "state") and one or more questions with a fixed set of allowed answers, and it returns the chosen answer and a probability for each option. It does not generate prose, explain itself, reason in steps, count, or compare dates. Because it only has to pick, it answers in about a tenth of a second and costs a few cents per million input tokens, roughly a thousandth of a language model.
+
+The name comes from Daniel Kahneman's fast, intuitive "System 1" thinking, as against slow, deliberate "System 2". TypeSafe coined the term for its Jev model. The pattern is now wider than one vendor. Three question types cover most needs: a yes/no probability (TypeSafe calls this a "noul"), a choice from a list, and a score on an ordered scale.
+
+Use one when the answer is a label, a yes/no, or a score from a known list. Use a language model when the answer needs free text, a chain of reasoning, or a shape you did not define in advance. In this skill, sorting and first-pass checks are System One work; reading, challenging and writing are language-model work.
+
+Options, as of 5 October 2026. Prices are per million input tokens; check the vendor page before relying on them.
+
+| Option | Vendor | Returns | Price | Notes |
+|---|---|---|---|---|
+| Jev | TypeSafe, https://docs.typesafe.ai | noul, choice, score with probabilities | $0.042; output free | The bundled script targets this API |
+| Clef and Clef-flash | Cloudflare Workers AI, https://developers.cloudflare.com/workers-ai/models/clef/ | Same three question types, probabilities per answer | $0.24 (27B) and $0.09 (9B, flash) | Open weights, Apache 2.0, on Hugging Face; also takes images. Launched 1 October 2026 |
+| Rerank models | Voyage AI, Cohere, Jina, Mixedbread | A relevance score per document for a query | Voyage rerank-3-lite $0.02 | Covers the rerank step only |
+| Classify endpoints | Cohere Classify, Jina Classifier | A label with confidence | Per token; rates vary | Zero-shot or few-shot labels |
+| Local zero-shot classifier | Hugging Face, for example `MoritzLaurer/deberta-v3-large-zeroshot-v2.0` | Entailment probability per label | Your own compute | 512-token limit; MIT; no data leaves the machine |
+| Small language model with a schema | Anthropic Haiku 4.5, OpenAI GPT-6 Luna | JSON matching your schema | $1 in / $5 out; $0.10 / $0.50 | The fallback this skill uses when no System One model is configured |
+
+Search for "System One model", "decision model" or "zero-shot classification API" to find newer options. Any of them can run the steps below if it returns a label or probability that code can threshold.
+
 ## System One steps (TypeSafe Jev)
 
 Jev returns a typed answer and a probability. It does not write text, reason, count, or compare dates. Give it one narrow question and a short relevant excerpt. Whole pages and synthesis questions belong to language models. Calibrate every threshold below on a sample of the real run before trusting it; the cookbook values are starting points, not rules.
 
-Setup: `TYPESAFE_API_KEY` in the environment, key from the TypeSafe console. `POST https://api.typesafe.ai/v1/systemone` with `Authorization: Bearer`, or `pip install typesafe-sdk` / `npm install @typesafe-ai/sdk`. The bundled script `scripts/typesafe_sort.py` runs the questions below over a JSONL file with no SDK. The live docs at https://docs.typesafe.ai (append `.md` to a page path) are the source of truth for the API shape.
+Setup: `TYPESAFE_API_KEY` in the environment, key from the TypeSafe console at https://console.typesafe.ai/keys. `POST https://api.typesafe.ai/v1/systemone` with `Authorization: Bearer`, or `pip install typesafe-sdk` / `npm install @typesafe-ai/sdk`. The bundled script `scripts/typesafe_sort.py` runs the questions below over a JSONL file with no SDK. The live docs at https://docs.typesafe.ai (append `.md` to a page path) are the source of truth for the API shape. To use Clef instead, keep the same questions and point the call at the Workers AI `/ai/run` endpoint; the request shape is close, but confirm field names on the Cloudflare model page.
 
 | Step | Primitive and question | State sent | Action on the answer | Closest cookbook |
 |---|---|---|---|---|

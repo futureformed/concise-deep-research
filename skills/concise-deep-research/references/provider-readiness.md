@@ -10,7 +10,7 @@ Maintain:
 |---|---|---|---|---|---|
 | Actual service name | Observed tool/CLI | Observed operation | available / succeeded / failed / unavailable | known name or unknown | yes/no and why |
 
-Possible services, not guaranteed integrations:
+Possible services, not guaranteed integrations (sign-up pages, prices and connect commands: [search-providers.md](search-providers.md)):
 
 - **Exa:** discover connected search and fetch tools. Read current Exa guidance when present.
 - **Tavily:** discover connected tools or its installed CLI and current help. Do not demand an API key before trying a supported keyless or existing authenticated interface.
