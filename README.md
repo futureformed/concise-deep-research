@@ -45,11 +45,13 @@ Prices, one-line connect commands for Claude Code and Codex, and notes on which 
 
 ## Use
 
+First decide where the results should go: a project folder, a synced Google Drive or OneDrive folder, or wherever you keep research. Name it in the request. If you do not, the skill saves to a `research/<date>-<slug>/` folder in the current working directory and tells you so before it starts.
+
 Ask your agent:
 
-> Use concise-deep-research to research [question]. The audience is [audience], the decision is [decision], and the scope is [scope].
+> Use concise-deep-research to research [question]. The audience is [audience], the decision is [decision], and the scope is [scope]. Save the results in [folder].
 
-The skill discovers the search tools your host exposes, runs the first query as a readiness test, and asks you to connect more providers only if fewer than three work.
+The skill discovers the search tools your host exposes, runs the first query as a readiness test, and asks you to connect more providers only if fewer than three work. It also tells you, before spending anything, if a classifier key or a search provider is missing and how to add it.
 
 ## What you get
 

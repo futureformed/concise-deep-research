@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2 (2026-10-05)
+
+- The scope stage asks for, or states, the folder the run will save into, so the user knows where `brief.md` will appear before the run starts. Default: `research/<date>-<slug>/` in the current working directory. README prompt template updated.
+
 ## 1.2.1 (2026-10-05)
 
 - The appendix holds only the register and ledger rows the brief relies on; full ledgers go to `work/evidence-full.md`.

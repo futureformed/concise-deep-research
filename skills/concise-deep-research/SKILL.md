@@ -11,7 +11,7 @@ Pay for judgement once. The strongest available model sets the plan, runs the ch
 
 ## 1. Scope and mode
 
-Extract the question, decision, audience, geography, date range, exclusions and desired output from the request. Ask one batched question only for missing details that materially change the work. Otherwise state reasonable assumptions briefly and proceed. Resolve relative dates using the current date and user's timezone.
+Extract the question, decision, audience, geography, date range, exclusions, desired output and the folder to save into from the request. Ask one batched question only for missing details that materially change the work; include the save location in that question if the user has not named one and the host offers a choice (a local folder, a synced drive, a notes app). Otherwise state reasonable assumptions briefly and proceed: the default location is a `research/<date>-<slug>/` folder in the current working directory, and the plan message must name it so the user knows where the brief will appear. Resolve relative dates using the current date and user's timezone.
 
 Do this stage on the top tier and keep it short: priority questions, the query plan per provider, stop rules and the run budget (queries per provider, challenge rounds, which tier runs each stage). Everything later follows this plan, so this is where judgement is worth paying for. Check which host controls are available: per-worker model choice, a TypeSafe key, code execution. Report what is missing to the user in the same message as the plan, with the one-line fix for each, so they can add a key or connect a service before the run spends anything. Where a control cannot be added, record it (for example "single model throughout") and continue.
 

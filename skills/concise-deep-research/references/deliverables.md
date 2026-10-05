@@ -4,7 +4,7 @@ Use these as schemas, not instructions to produce empty sections. Omit fields ge
 
 ## Run folder layout
 
-Two files for the user, everything else in `work/`:
+The run folder is the location the user named, or `research/<date>-<slug>/` under the current working directory by default. Two files for the user, everything else in `work/`:
 
 ```
 <run>/brief.md        the answer; the only file most users read
