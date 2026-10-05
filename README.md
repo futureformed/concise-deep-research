@@ -53,8 +53,16 @@ The skill discovers the search tools your host exposes, runs the first query as 
 
 ## What you get
 
-- `brief.md`: a 2–3 sentence answer, up to five cited findings, up to three implications, the uncertainties that could change the decision, and one coverage line naming the providers and date.
-- `evidence.md`: scope, provider log, source register, claim ledger, challenge record, remaining gaps, and a model and cost log.
+Two files, in a run folder:
+
+- `brief.md`: the answer. A 2–3 sentence conclusion, up to five cited findings, up to three implications, the uncertainties that could change the decision, and one coverage line naming the providers and date. This is the file to read.
+- `evidence.md`: the receipts. Open it only to check a claim: each source ID in the brief leads to the URL, the passage location, the reader's status and the challenger's verdict. It also holds the provider log, the remaining gaps and a model and cost log.
+
+The run also writes a `work/` subfolder: search registers, classifier input and output, full claim ledgers, the draft findings and the challenge record, plus run notes. It is the audit trail and the checkpoint a resumed run picks up from. It is not meant to be read, and you can delete it once you accept the brief.
+
+## How long it takes
+
+A standard run takes roughly 15 to 40 minutes of wall-clock time, longer on a slow host. The skill searches three providers, reads the sources it cites rather than trusting snippets, labels every claim, and then runs a separate adversarial pass that tries to overturn the findings before anything is written. Most of that time is reading and cross-checking, not searching. If you need an answer in two minutes, this is the wrong tool; ask your agent a plain question instead.
 
 ## What a System One model is
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 (2026-10-05)
+
+- The appendix holds only the register and ledger rows the brief relies on; full ledgers go to `work/evidence-full.md`.
+- The skill and README now say plainly what `work/` is for (audit trail and resume checkpoint), that it is not meant to be read, and that it can be deleted once the brief is accepted.
+- README states how long a run takes and why.
+
 ## 1.2.0 (2026-10-05)
 
 Changes from the first live run (three providers, TypeSafe Jev sort and triage, Sonnet readers, Opus challenge).

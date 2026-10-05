@@ -79,7 +79,7 @@ Use [deliverables.md](references/deliverables.md). Lead with the answer, not a d
 4. Only uncertainties that could change the decision.
 5. One short coverage line: successful providers, research date and any shortfall.
 
-Keep the brief within the requested length; default to 600–900 words, shorter when sufficient. The evidence appendix is separate, never appended as a huge chat block. Remove repeated context, generic introductions and source-by-source narration. Preserve meaningful qualifiers, denominators and time periods. Use plain English and avoid em dashes by default.
+Keep the brief within the requested length; default to 600–900 words, shorter when sufficient. The evidence appendix is separate, never appended as a huge chat block, and holds only the register and ledger rows the brief relies on; the full ledgers stay in `work/`. Remove repeated context, generic introductions and source-by-source narration. Preserve meaningful qualifiers, denominators and time periods. Use plain English and avoid em dashes by default.
 
 The user gets two files and nothing else at the top level: `brief.md`, which they read, and `evidence.md`, which they open only to check a claim. Everything else the run produces (scope, query plan, registers, classifier input and output, ledgers, draft findings, challenge record, run notes, raw tool output) goes in a `work/` subfolder, so the run folder looks like this:
 
@@ -89,7 +89,7 @@ The user gets two files and nothing else at the top level: `brief.md`, which the
 <run>/work/...
 ```
 
-Tell the user in one line where the brief is and that the appendix exists; do not list the working files. Save in the user's requested location, otherwise follow the host's storage rules. Use stable source IDs and actual source URLs in exported files; host-specific citation tokens alone are not portable. In chat, follow the host's native citation rules. If file output is unavailable, provide the concise brief with citations and state that the separate evidence artifact could not be saved.
+Tell the user in one line where the brief is, that the appendix exists for checking a claim, and that `work/` is the audit trail and resume checkpoint and can be deleted once the brief is accepted. Do not list the working files. Save in the user's requested location, otherwise follow the host's storage rules. Use stable source IDs and actual source URLs in exported files; host-specific citation tokens alone are not portable. In chat, follow the host's native citation rules. If file output is unavailable, provide the concise brief with citations and state that the separate evidence artifact could not be saved.
 
 Synthesis is top-tier work by the agent that owns the plan and read the challenge verdicts. Mechanical checks are code, not a model: word count with `wc -w`, link liveness with `curl -I`, stable IDs and no invented URLs with grep against the register.
 

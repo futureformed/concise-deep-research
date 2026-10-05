@@ -12,7 +12,9 @@ Two files for the user, everything else in `work/`:
 <run>/work/           scope, registers, classifier files, ledgers, challenge, run-notes, raw output
 ```
 
-`evidence.md` opens with a three-line "How to use this" note: find the claim in the brief, look up its source ID in the register, read the ledger row for the passage and status. Keep the appendix complete but do not pad it; the full ledgers belong in `work/` if they exceed about 3,000 words, with the appendix holding the rows the brief relies on.
+`evidence.md` opens with a three-line "How to use this" note: find the claim in the brief, look up its source ID in the register, read the ledger row for the passage and status. The appendix holds only the register rows and ledger rows the brief relies on, plus the provider log, challenge verdicts, gaps and cost log. The full ledgers and registers go in `work/evidence-full.md`.
+
+`work/` exists for two reasons: it is the audit trail if anyone disputes a claim later, and it is the checkpoint a resumed run reads instead of searching again. It is machine-oriented and not meant to be read. Say so to the user, and say it can be deleted once the brief is accepted.
 
 ## brief.md
 
