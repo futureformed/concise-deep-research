@@ -2,7 +2,7 @@
 
 ![How concise deep research works: a question goes to three search providers, a System One classifier sorts the results, mid-tier readers build a claim ledger, a top-tier challenger attacks the findings, and the top tier writes a short brief with a separate evidence appendix.](assets/pipeline.svg)
 
-An agent skill that produces short, evidence-led research briefs. Every standard run searches through at least three distinct search providers, reads the sources it cites, labels each claim as supported, partly supported, disputed or unverified, and delivers a 600–900 word brief with a separate evidence appendix. Cheap models and a System One classifier do the searching and sorting; the strongest model plans, challenges and writes.
+An agent skill that produces short, evidence-led research briefs. Every standard run searches through at least three distinct search providers, reads the sources it cites, labels each claim as supported, partly supported, disputed or unverified, and delivers a brief of about 1,200 to 1,800 words with a separate evidence appendix. Cheap models and a System One classifier do the searching and sorting; the strongest model plans, challenges and writes.
 
 It follows the open [SKILL.md](https://agentskills.io) format, so one folder works in Claude Code, Codex CLI, OpenCode and any other host that reads agent skills.
 
@@ -28,20 +28,54 @@ By hand: copy `skills/concise-deep-research` into your host's skills folder (for
 
 ## Connect search providers
 
-The skill needs three search services that return real results. Four of these work with no key for light use, so you can try the skill before you spend anything. Sign up, create a key in the console, and give it to your host through its credential settings or the provider's MCP sign-in. Never paste a key into a chat.
+The skill needs three search services that return real results. Four of these work with no key for light use, so you can try the skill before you spend anything. The last column says what each provider asks for before your agent can use it. The section after the table says where a key goes.
 
-| Provider | Get a key | Free allowance | Page text? |
-|---|---|---|---|
-| [Exa](https://dashboard.exa.ai/api-keys) | dashboard.exa.ai | $10 credit a month; keyless MCP | Yes |
-| [Tavily](https://app.tavily.com) | app.tavily.com | 1,000 credits a month | Yes |
-| [Brave Search](https://api-dashboard.search.brave.com/register) | api-dashboard.search.brave.com | $5 credit a month | Snippets |
-| [Parallel](https://platform.parallel.ai) | platform.parallel.ai | 5,000 requests a month; keyless MCP | Excerpts |
-| [Firecrawl](https://www.firecrawl.dev/app/api-keys) | firecrawl.dev | 1,000 credits a month; keyless with limits | Yes |
-| [Linkup](https://app.linkup.so) | app.linkup.so | 4,000 queries | Yes |
-| [Perplexity](https://console.perplexity.ai) | console.perplexity.ai | None documented | Snippets |
-| [You.com](https://you.com/platform) | you.com/platform | 100 queries a day keyless | Yes |
+| Provider | Get a key | Free allowance | Page text? | What you need |
+|---|---|---|---|---|
+| [Exa](https://dashboard.exa.ai/api-keys) | dashboard.exa.ai | $10 credit a month; keyless MCP | Yes | Nothing to start; a key for more use |
+| [Tavily](https://app.tavily.com) | app.tavily.com | 1,000 credits a month | Yes | A browser sign-in the first time |
+| [Brave Search](https://api-dashboard.search.brave.com/register) | api-dashboard.search.brave.com | $5 credit a month | Snippets | A key |
+| [Parallel](https://platform.parallel.ai) | platform.parallel.ai | 5,000 requests a month; keyless MCP | Excerpts | Nothing |
+| [Firecrawl](https://www.firecrawl.dev/app/api-keys) | firecrawl.dev | 1,000 credits a month; keyless with limits | Yes | A browser sign-in the first time |
+| [Linkup](https://app.linkup.so) | app.linkup.so | 4,000 queries | Yes | A key |
+| [Perplexity](https://console.perplexity.ai) | console.perplexity.ai | None documented | Snippets | A key |
+| [You.com](https://you.com/platform) | you.com/platform | 100 queries a day keyless | Yes | Nothing to start; a key for more use |
 
 Prices, one-line connect commands for Claude Code and Codex, and notes on which services count as distinct providers are in [search-providers.md](skills/concise-deep-research/references/search-providers.md).
+
+## Where your API keys go
+
+An API key is a long string of letters and numbers that a provider gives you when you sign up. It works like a password for a program. Each time your agent searches through a provider, it sends the key with the request. The provider checks the key, runs the search and counts the cost against your account. Anyone who has your key can spend your credit, so treat it like a password.
+
+You never type the key into a chat, and the skill never asks you for it. The key goes into one place in your agent host, once, before your first run. After that, the host sends it with every search and you do not touch it again.
+
+**When.** Do this once per provider, before you run the skill for the first time. The skill checks for working providers at the start of every run and tells you if one is missing.
+
+**How.**
+
+1. Sign up with the provider and create a key in its console. The links are in the table above.
+2. Copy the key. Most consoles show it once. If you lose it, create a new one.
+3. Put it in the one place for your host. The table below says where.
+4. Start a new session, so the host loads the new connection.
+5. Ask your agent to run one search with that provider. A real result means the key works. Installed is not connected.
+6. Save the key in your password manager and clear it from your clipboard.
+
+**Where.**
+
+| Host | Where the key lives | What you do |
+|---|---|---|
+| Claude Code | Claude Code's own config file, `~/.claude.json`, outside your project | Run the provider's `claude mcp add` command from [search-providers.md](skills/concise-deep-research/references/search-providers.md). The key is part of the command, as a `--header` or `--env` option. Claude Code stores it for you. |
+| Codex CLI | `~/.codex/config.toml`, under `[mcp_servers.<name>]` | Run the provider's `codex mcp add` command, or add the block by hand with the key in its `env` table. |
+| Claude Cowork, claude.ai, ChatGPT | The provider's connector settings in the app | Add the provider as a connector. Paste the key into the field the connector asks for, or sign in when it opens a browser page. |
+| Any host, for the classifier | A shell environment variable, `TYPESAFE_API_KEY` | Add `export TYPESAFE_API_KEY="..."` to `~/.zshenv` on macOS or `~/.bashrc` on Linux, then open a new terminal. Details in [model-routing.md](skills/concise-deep-research/references/model-routing.md). |
+
+Three things to know:
+
+- The connect commands write `$LINKUP_API_KEY` and similar. That is a placeholder for a shell variable. Either replace it with your key, between the quotes, or set the variable in your shell first.
+- Providers marked "browser sign-in" (Tavily, Firecrawl) open a web page the first time your agent uses them. You log in there and the host keeps a token. You never see or store a key.
+- In Claude Code, `claude mcp add --scope project` writes a `.mcp.json` file inside your project, which git will commit. Do not put a real key there. If a team needs a shared `.mcp.json`, write `${LINKUP_API_KEY}` in the file and set the variable in each person's shell.
+
+Where a key must never go: a chat message, a prompt, `SKILL.md`, the run folder, or any file in a git repository.
 
 ## Use
 
@@ -57,7 +91,7 @@ The skill discovers the search tools your host exposes, runs the first query as 
 
 Two files, in a run folder:
 
-- `brief.md`: the answer. A 2–3 sentence conclusion, up to five cited findings, up to three implications, the uncertainties that could change the decision, and one coverage line naming the providers and date. This is the file to read.
+- `brief.md`: the answer, about 1,200 to 1,800 words. A 2–3 sentence conclusion, up to five cited findings, up to three implications, the uncertainties that could change the decision, and one coverage line naming the providers and date. Each finding carries the figure, its denominator, the period, the method and the main caveat, so you can judge it without opening the appendix. This is the file to read.
 - `evidence.md`: the receipts. Open it only to check a claim: each source ID in the brief leads to the URL, the passage location, the reader's status and the challenger's verdict. It also holds the provider log, the remaining gaps and a model and cost log.
 
 The run also writes a `work/` subfolder: search registers, classifier input and output, full claim ledgers, the draft findings and the challenge record, plus run notes. It is the audit trail and the checkpoint a resumed run picks up from. It is not meant to be read, and you can delete it once you accept the brief.

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0 (2026-10-05)
+
+- Default brief length raised from 600–900 to 1,200–1,800 words. The first live run showed that a brief at the old length sent the reader into the appendix for every claim. The extra words go into the evidence behind each finding (figure, denominator, period, method, main caveat), not into process narration. `SKILL.md`, `deliverables.md`, `METHODS.md`, `APPROACH.md` and the README updated.
+- README: a "Where your API keys go" section in plain English, with a "What you need" column in the provider table (nothing, a browser sign-in, or a key), the order of steps, and one table saying where the key lives for Claude Code, Codex CLI, the Claude apps and the classifier.
+
 ## 1.2.2 (2026-10-05)
 
 - The scope stage asks for, or states, the folder the run will save into, so the user knows where `brief.md` will appear before the run starts. Default: `research/<date>-<slug>/` in the current working directory. README prompt template updated.

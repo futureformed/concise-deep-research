@@ -5,7 +5,7 @@ description: Conduct concise, evidence-led deep research through at least three 
 
 # Concise deep research
 
-Produce a usable decision brief supported by an inspectable evidence trail. Default to 600–900 words or fewer, with a separate evidence appendix. Explicit user scope and length override these defaults.
+Produce a usable decision brief supported by an inspectable evidence trail. Default to 1,200–1,800 words, with a separate evidence appendix. Explicit user scope and length override these defaults.
 
 Pay for judgement once. The strongest available model sets the plan, runs the challenge pass and writes the brief. Cheaper models and a System One classifier do searching, sorting and first-pass checks; code does counting and link checks. Read [model-routing.md](references/model-routing.md) before the first delegation. Cost rules never relax the evidence rules below.
 
@@ -79,7 +79,7 @@ Use [deliverables.md](references/deliverables.md). Lead with the answer, not a d
 4. Only uncertainties that could change the decision.
 5. One short coverage line: successful providers, research date and any shortfall.
 
-Keep the brief within the requested length; default to 600–900 words, shorter when sufficient. The evidence appendix is separate, never appended as a huge chat block, and holds only the register and ledger rows the brief relies on; the full ledgers stay in `work/`. Remove repeated context, generic introductions and source-by-source narration. Preserve meaningful qualifiers, denominators and time periods. Use plain English and avoid em dashes by default.
+Keep the brief within the requested length; default to 1,200–1,800 words, shorter when the question is simple. Spend the words on the evidence behind each finding (the figure, its denominator, the period, the method and the main caveat), so the reader can judge a finding without opening the appendix. A brief that is too short sends the reader to the appendix for every claim, which costs more time than the extra sentences. The evidence appendix is separate, never appended as a huge chat block, and holds only the register and ledger rows the brief relies on; the full ledgers stay in `work/`. Remove repeated context, generic introductions and source-by-source narration. Preserve meaningful qualifiers, denominators and time periods. Use plain English and avoid em dashes by default.
 
 The user gets two files and nothing else at the top level: `brief.md`, which they read, and `evidence.md`, which they open only to check a claim. Everything else the run produces (scope, query plan, registers, classifier input and output, ledgers, draft findings, challenge record, run notes, raw tool output) goes in a `work/` subfolder, so the run folder looks like this:
 

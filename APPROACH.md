@@ -4,7 +4,7 @@ Version 1.0 · 5 October 2026
 
 ## Purpose
 
-Produce research that is credible enough to support decisions and concise enough to use. The default is a 600–900 word decision brief, backed by a separate evidence appendix. Shorter is better when sufficient; requested detail takes precedence over the default length.
+Produce research that is credible enough to support decisions and concise enough to use. The default is a 1,200–1,800 word decision brief, backed by a separate evidence appendix. Each finding carries enough of its evidence to be judged without the appendix. Shorter is fine when the question is simple; requested detail takes precedence over the default length.
 
 This is an original implementation. The Trust Insights Deep Research Suite was a functional reference, not a source of proprietary skill instructions. Its public description is at https://academy.trustinsights.ai/products/digital_downloads/deep-research-suite. This version adds mandatory multi-provider discovery and can conduct research with the tools available in its host.
 

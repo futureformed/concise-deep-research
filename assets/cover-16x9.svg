@@ -93,7 +93,7 @@
   <g transform="translate(690,300)">
     <rect width="190" height="110" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
     <text x="16" y="30" class="h" style="fill:#0f172a">brief.md</text>
-    <text x="16" y="52" class="s" style="fill:#475569">600–900 words</text>
+    <text x="16" y="52" class="s" style="fill:#475569">1,200–1,800 words</text>
     <text x="16" y="68" class="s" style="fill:#475569">answer · 5 findings ·</text>
     <text x="16" y="84" class="s" style="fill:#475569">3 implications · what could</text>
     <text x="16" y="100" class="s" style="fill:#475569">change it · coverage line</text>

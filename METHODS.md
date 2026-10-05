@@ -92,7 +92,7 @@ Where the host supports sub-agents with a choice of model, the skill uses three 
 
 ## 9. Deliverables
 
-`brief.md`: the answer, up to five findings with inline citations, up to three implications, decision-relevant uncertainties, and one coverage line naming the successful providers and the research date. Default 600–900 words, shorter when sufficient. A requested length or structure overrides the default.
+`brief.md`: the answer, up to five findings with inline citations, up to three implications, decision-relevant uncertainties, and one coverage line naming the successful providers and the research date. Default 1,200–1,800 words, shorter when the question is simple; each finding carries enough evidence to be judged without the appendix. A requested length or structure overrides the default.
 
 `evidence.md`: scope, provider log, source register, claim ledger, challenge record and remaining gaps, model and cost log. Full URLs and stable IDs, so citations work outside the chat that produced them.
 

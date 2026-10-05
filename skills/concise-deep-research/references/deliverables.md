@@ -25,7 +25,7 @@ The run folder is the location the user named, or `research/<date>-<slug>/` unde
 
 ## Key findings
 
-- **[Finding].** [Evidence and meaningful qualification.] [S01](actual-source-url)
+- **[Finding].** [The evidence in two to five sentences: the figure, its denominator, the period, the method and the main caveat.] [S01](actual-source-url)
 
 ## Implications
 
@@ -39,7 +39,7 @@ Research date: [date]. Search providers: [actual successful services].
 [Coverage shortfall if any.] Evidence: [link to evidence.md].
 ```
 
-Aim for up to five findings and three implications. A requested table, result count or meeting-question structure takes precedence. The default 600–900 words is a ceiling-oriented target, not a minimum. Do not compress a complex required answer into misleading brevity.
+Aim for up to five findings and three implications. A requested table, result count or meeting-question structure takes precedence. The default 1,200–1,800 words is a ceiling-oriented target, not a minimum. Each finding carries the evidence a reader needs to judge it without opening the appendix; the appendix is for checking a claim, not for understanding one. Do not compress a complex required answer into misleading brevity, and do not pad a simple one.
 
 ## evidence.md
 
