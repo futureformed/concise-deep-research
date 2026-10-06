@@ -1,7 +1,7 @@
 {
   "name": "concise-deep-research",
   "displayName": "Concise Deep Research",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Evidence-led research briefs through at least three search providers, with a claim ledger, model routing by stage and System One classifier steps.",
   "author": {
     "name": "Liam Dystant"

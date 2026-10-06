@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.1 (2026-10-06)
+
+- README: install steps rewritten for beginners. A table helps readers find their Claude app (Claude chat, Cowork or Claude Code), with numbered steps for each, a plain explanation of skills and plugins, a check that the install worked, update and remove steps, and fixes for common problems.
+- README: steps to add three keyless search providers as connectors in Claude chat and Cowork.
+- Each release carries `concise-deep-research.zip`, with the skill folder at its root, for upload to Claude chat.
+
 ## 1.3.0 (2026-10-05)
 
 - Default brief length raised from 600–900 to 1,200–1,800 words. The first live run showed that a brief at the old length sent the reader into the appendix for every claim. The extra words go into the evidence behind each finding (figure, denominator, period, method, main caveat), not into process narration. `SKILL.md`, `deliverables.md`, `METHODS.md`, `APPROACH.md` and the README updated.

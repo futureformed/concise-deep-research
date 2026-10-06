@@ -8,23 +8,118 @@ It follows the open [SKILL.md](https://agentskills.io) format, so one folder wor
 
 ## Install
 
-Claude Code, as a plugin:
+You install the skill once. After that, Claude uses it when you ask for research. Setup takes about five minutes.
 
-```bash
-claude plugin marketplace add futureformed/concise-deep-research
-```
+### First, which Claude are you using?
 
-```bash
-claude plugin install concise-deep-research@concise-deep-research
-```
+Claude comes in three forms. The steps are different for each, so find yours first.
 
-Any other agent, with the skills installer (add `-g` for a global install):
+| You use Claude... | That is | Go to |
+|---|---|---|
+| In a web browser at claude.ai, or in the Claude app, and you type messages in a chat | **Claude chat** | [Claude chat](#claude-chat) |
+| In the Claude desktop app, in the **Cowork** tab, where Claude works on files in a folder on your computer | **Cowork** | [Cowork](#cowork) |
+| In a terminal window, where you type `claude` to start it, or in the **Code** tab of the desktop app | **Claude Code** | [Claude Code](#claude-code) |
+
+Not sure? If you only chat with Claude, you use Claude chat. Start there.
+
+You need a paid Claude plan (Pro, Max, Team or Enterprise). The free plan cannot use skills.
+
+### What is a skill, and what is a plugin?
+
+A **skill** is a folder of instructions. It teaches Claude how to do one job. This skill teaches Claude how to do careful research.
+
+A **plugin** is a package that holds one or more skills. It makes the skill easy to install and update. Cowork and Claude Code install plugins. Claude chat uses the skill file directly.
+
+You do not need to understand the files inside. Follow the steps for your app.
+
+### Claude chat
+
+Use this if you chat with Claude at claude.ai, or in the Claude desktop or mobile app.
+
+1. **Download the skill file.** Click this link: [concise-deep-research.zip](https://github.com/futureformed/concise-deep-research/releases/latest/download/concise-deep-research.zip). Your browser saves a zip file, usually to your Downloads folder. Do not open or unzip it.
+2. **Open Claude** at [claude.ai](https://claude.ai) on a computer. You cannot upload skills from the mobile app.
+3. **Turn on code execution.** Go to **Settings**, then **Capabilities**. Turn on **Code execution and file creation**. Skills need this setting.
+4. **Open the skills page.** In the left sidebar, click **Customize**, then **Skills**.
+5. **Upload the file.** Click the **+** button, then **Upload a skill**. Choose `concise-deep-research.zip` from your Downloads folder.
+6. **Check that it is on.** The skill now shows in your list. Make sure its switch is on.
+
+The skill now works in every new chat, on the web, the desktop app and the mobile app.
+
+Do not use the green **Code > Download ZIP** button on this GitHub page. That zip holds the whole project, and Claude will reject it. Use the link in step 1.
+
+### Cowork
+
+Use this if you use the Cowork tab in the Claude desktop app.
+
+1. **Open the Claude desktop app** and click **Customize** in the left sidebar.
+2. Click **Plugins**.
+3. Click **Add marketplace**. A marketplace is a list of plugins that someone shares from GitHub.
+4. **Type the address** `futureformed/concise-deep-research` and confirm.
+5. Find **Concise Deep Research** in the list and click **Install**.
+6. **Start a new Cowork task.** Cowork loads new plugins when a task starts, not during one.
+
+Plugins you add here are saved to your Claude account. They also show in Claude Code on any computer where you sign in.
+
+If you cannot add a marketplace (some work accounts turn it off), download [concise-deep-research.zip](https://github.com/futureformed/concise-deep-research/releases/latest/download/concise-deep-research.zip) and use the steps for [Claude chat](#claude-chat) instead.
+
+### Claude Code
+
+Use this if you start Claude by typing `claude` in a terminal.
+
+1. **Open a terminal.** On a Mac, open the **Terminal** app. On Windows, open **PowerShell**.
+2. **Copy and run this command.** It tells Claude Code where to find the plugin.
+
+   ```bash
+   claude plugin marketplace add futureformed/concise-deep-research
+   ```
+
+3. **Copy and run this command.** It installs the plugin.
+
+   ```bash
+   claude plugin install concise-deep-research@concise-deep-research
+   ```
+
+4. **Start Claude Code again.** Type `claude` and press Return. If Claude Code was already open, type `/reload-plugins` instead.
+
+You can also do steps 2 and 3 inside Claude Code. Type `/plugin`, press Return, and follow the menu.
+
+**In the Code tab of the desktop app:** click the **+** button next to the message box, then **Plugins**, then **Add plugin**. Add the marketplace `futureformed/concise-deep-research` and install **Concise Deep Research**.
+
+### Other agents (Codex, OpenCode, Cursor and others)
+
+Run this in a terminal. Add `-g` at the end to install it for all your projects.
 
 ```bash
 npx skills add futureformed/concise-deep-research --skill concise-deep-research
 ```
 
-By hand: copy `skills/concise-deep-research` into your host's skills folder (for example `~/.claude/skills/` or `~/.agents/skills/`), keeping the `references`, `agents` and `scripts` subfolders.
+Or copy the folder `skills/concise-deep-research` into your agent's skills folder, for example `~/.claude/skills/` or `~/.agents/skills/`. Keep the `references`, `agents` and `scripts` folders inside it.
+
+### Check that it works
+
+Start a new chat or session and type:
+
+> What skills do you have for research?
+
+Claude should name **concise-deep-research**. If it does, the install worked. Next, [connect three search providers](#connect-search-providers). The skill cannot do research without them.
+
+### Update or remove
+
+| App | To update | To remove |
+|---|---|---|
+| Claude chat | Download the zip again. In **Customize > Skills**, delete the old skill and upload the new one. | In **Customize > Skills**, open the skill's menu and delete it. |
+| Cowork | In **Customize > Plugins**, open the plugin and click **Update** if it shows. | In **Customize > Plugins**, open the plugin and click **Uninstall**. |
+| Claude Code | `claude plugin update concise-deep-research@concise-deep-research` | `claude plugin uninstall concise-deep-research@concise-deep-research` |
+
+### If something goes wrong
+
+- **"Invalid skill" or "SKILL.md not found" in Claude chat.** You uploaded the wrong zip. Download it from the link in step 1 of [Claude chat](#claude-chat), not from the green Code button.
+- **No Skills page in Customize.** Your plan may not include skills, or your organisation has turned them off. On a Team or Enterprise plan, ask your admin.
+- **`claude: command not found`.** Claude Code is not installed on this computer. Install it from [claude.com/claude-code](https://claude.com/claude-code), or use the Claude chat steps.
+- **Claude does not use the skill.** Start a new chat or session. Then name it in your request: "Use concise-deep-research to research ...".
+- **The skill says it has fewer than three search providers.** The install worked. Connect more search services, as the next section shows.
+
+Menu names in the Claude apps change from time to time. If a button has a different name, look for the nearest match. These steps were checked on 6 October 2026.
 
 ## Connect search providers
 
@@ -42,6 +137,28 @@ The skill needs three search services that return real results. Four of these wo
 | [You.com](https://you.com/platform) | you.com/platform | 100 queries a day keyless | Yes | Nothing to start; a key for more use |
 
 Prices, one-line connect commands for Claude Code and Codex, and notes on which services count as distinct providers are in [search-providers.md](skills/concise-deep-research/references/search-providers.md).
+
+### The easy start: three free providers in Claude chat or Cowork
+
+A search provider joins Claude as a **connector**. A connector is a link that lets Claude use another service. These three need no key and no payment:
+
+| Provider | Connector address |
+|---|---|
+| Parallel | `https://search.parallel.ai/mcp` |
+| Tavily | `https://mcp.tavily.com/mcp/` |
+| Firecrawl | `https://mcp.firecrawl.dev/v2/mcp-oauth` |
+
+Add each one like this:
+
+1. In Claude, click **Customize** in the left sidebar, then **Connectors**.
+2. Click **+**, then **Add custom connector**.
+3. Type the provider's name, for example `Parallel`, and paste its address from the table.
+4. Click **Add**. If a sign-in page opens (Tavily and Firecrawl do this), make a free account and sign in.
+5. Do the same for the next provider.
+
+Connectors you add are saved to your Claude account, so they work in Claude chat and Cowork. Start a new chat after you add them. On a Team or Enterprise plan, an admin may need to add custom connectors for you.
+
+In Claude Code, use the one-line commands in [search-providers.md](skills/concise-deep-research/references/search-providers.md) instead.
 
 ## Where your API keys go
 

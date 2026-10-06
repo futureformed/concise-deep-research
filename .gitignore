@@ -6,3 +6,4 @@ __pycache__/
 *-private.md
 data/private/
 .claude/
+dist/
