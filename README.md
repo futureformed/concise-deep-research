@@ -236,6 +236,7 @@ TypeSafe's Jev is one option, and the bundled script targets its API. Cloudflare
 | `skills/concise-deep-research/references/model-routing.md` | Which model tier and which classifier runs each stage, with dated prices |
 | `skills/concise-deep-research/references/delegation-templates.md` | Sub-agent contracts and agent files for Claude Code and Codex |
 | `skills/concise-deep-research/scripts/typesafe_sort.py` | Runs the classifier steps over JSONL rows, standard library only |
+| `scripts/build-release-zip.sh` | Builds the zip for Claude chat to attach to each GitHub release |
 | `METHODS.md` | Why the method is shaped this way |
 | `APPROACH.md` | The agreed research method in prose |
 | `EVALUATION.md` | Behavioural acceptance scenarios |
